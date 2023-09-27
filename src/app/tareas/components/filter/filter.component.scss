@@ -1,0 +1,13 @@
+.containerFilter{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .actionFilter{
+        display: flex;
+        gap: 2px;
+        align-items: center;
+        padding: 2px;
+    }
+}

@@ -1,0 +1,23 @@
+:host{
+  flex-grow: 1;
+  overflow: hidden;
+  /*margin: 0 auto;  */
+   
+  .containerForm{
+    padding: 16px;
+    
+  
+    form{
+    display: flex;
+    flex-direction: column;
+       }
+    .formActions{
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 8px;
+
+       }
+       
+ }
+
+}

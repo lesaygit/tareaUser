@@ -1,0 +1,22 @@
+<div class="containerFilter">
+
+    <mat-form-field>
+        <mat-label>Filtra por Estado</mat-label>
+        <mat-select (selectionChange)="onState($event.value)" [value]="defaulValue">
+            <mat-option *ngFor="let state of states" [value]="state">
+                {{state}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="onText($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+
+    <div class="actionFilter">
+        <button mat-button mat-flat-button (click)="timeProces.emit()" color="primary">+ tiempo en procs.</button>
+        <button mat-button mat-flat-button (click)="vencidas.emit()" color="primary">vencidas x fecha</button>
+    </div>
+
+</div>

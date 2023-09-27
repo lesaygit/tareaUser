@@ -1,0 +1,39 @@
+<table mat-table [dataSource]="tareas" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Tarea </th>
+        <td mat-cell *matCellDef="let element"><a (click)="onView(element)">{{ element.name }}</a></td>
+    </ng-container>
+    <ng-container matColumnDef="startDate">
+        <th mat-header-cell *matHeaderCellDef> Fecha de Creación </th>
+        <td mat-cell *matCellDef="let element"> {{ element.startDate|date:'dd/MM/yyyy' }}</td>
+    </ng-container>
+    <ng-container matColumnDef="endDate">
+        <th mat-header-cell *matHeaderCellDef> Fecha Límite </th>
+        <td mat-cell *matCellDef="let element"> {{ element.endDate|date:'dd/MM/yyyy' }}</td>
+    </ng-container>
+    <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let element">
+            <div class="state" [style.backgroundColor]="element.state|estadoColor">{{element.state}}</div>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="action-column">
+            <button mat-mini-fab color="accent" aria-label="Add a new Course" (click)="onAdd()"
+                class="action-column-header">
+                <mat-icon>add</mat-icon>
+            </button>
+        </th>
+        <td mat-cell *matCellDef="let element" class="action-column">
+            <button mat-icon-button color="primary" aria-label="Update" (click)="onEdit(element)">
+                <mat-icon>edit</mat-icon>
+            </button>
+
+            <button mat-icon-button color="warn" aria-label="Remove" (click)="onRemove(element)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

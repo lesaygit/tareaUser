@@ -1,0 +1,18 @@
+<mat-card appearance="outlined">
+    <div>
+        <mat-toolbar color="primary">Lista de Tareas</mat-toolbar>
+        <app-filter (state)="state($event)" (timeProces)="onTimeProces()" (textConten)="applyFilter($event)"
+            (vencidas)="tareasVencidas()">
+        </app-filter>
+    </div>
+
+    <div class="mat-elevation-z8 containerTable" *ngIf="tareas$ | async as tareaPage">
+        <app-tareas-list [tareas]=" tareaPage.tareas" (add)="onAdd()" (edit)="onEdit($event)"
+            (remove)="onRemove($event)" (view)="onView()">
+        </app-tareas-list>
+        <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons [length]="tareaPage.totalElements"
+            [pageIndex]="pageIndex" [pageSize]="pageSize" (page)="refresh($event)" aria-label="Select page of courses">
+        </mat-paginator>
+    </div>
+
+</mat-card>

@@ -1,0 +1,17 @@
+:host {
+    flex-grow: 1;
+    overflow: hidden;
+
+    mat-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .containerTable {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+}

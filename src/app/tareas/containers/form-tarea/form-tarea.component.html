@@ -1,0 +1,76 @@
+<div class="containerForm">
+    <h2>Formulario de Tarea</h2>
+    <form [formGroup]="formTarea" class="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name">
+            <div *ngIf="formTarea.invalid">
+                <div class="error"
+                    *ngIf="formTarea.get('name')?.touched && formTarea.get('name')?.errors?.['required']">
+                    Este campo es requerido.
+                </div>
+                <div class="error"
+                    *ngIf="formTarea.get('name')?.touched && formTarea.get('name')?.errors?.['minlength']">
+                    3 caracteres minimo.
+                </div>
+                <div class="error"
+                    *ngIf="formTarea.get('name')?.touched && formTarea.get('name')?.errors?.['maxlength']">
+                    30 caracteres máximo.
+                </div>
+            </div>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Fecha de creacion</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="startDate">
+            <div *ngIf="formTarea.invalid">
+                <div class="error"
+                    *ngIf="formTarea.get('startDate')?.touched && formTarea.get('startDate')?.errors?.['required']">
+                    Este campo es requerido.
+                </div>
+            </div>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Fecha Limite</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="endDate">
+            <div *ngIf="formTarea.invalid">
+                <div class="error"
+                    *ngIf="formTarea.get('endDate')?.touched && formTarea.get('endDate')?.errors?.['required']">
+                    Este campo es requerido.
+                </div>
+            </div>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Descripcion</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+            <div *ngIf="formTarea.invalid">
+                <div class="error"
+                    *ngIf="formTarea.get('description')?.touched && formTarea.get('description')?.errors?.['maxlength']">
+                    250 caracteres máximo.
+                </div>
+            </div>
+        </mat-form-field>
+        <small> {{this.formTarea.get('description')?.value.length}}/250</small>
+
+        <mat-form-field *ngIf="tareaEdit.id" appearance="fill">
+            <mat-label>Tarea Estado</mat-label>
+            <mat-select formControlName="state">
+                <mat-option [value]="option" *ngFor="let option of estadoTareas"
+                    [disabled]="tareaEdit.state=='EN_PROCESO'&& option=='CREADO'">{{ option }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    <div class="formActions">
+        <button mat-flat-button color="primary" (click)="saveTarea()" [disabled]="formTarea.invalid">Salvar</button>
+        <button mat-flat-button color="accent" (click)="onCancel()">Cancel</button>
+    </div>
+
+</div>

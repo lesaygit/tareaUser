@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Tareas no realizadas en tiempo.</h1>
+<div mat-dialog-content>
+    <ul>
+        <li *ngFor="let tarea of tareas">
+            Tarea:{{tarea.name}} Descripcion:{{tarea.description}}
+        </li>
+    </ul>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+</div>

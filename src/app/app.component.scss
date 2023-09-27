@@ -1,0 +1,19 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    .containerMenu{
+        padding: 16px;
+        h1{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        a{
+            text-decoration: none;
+            padding: 6px;
+        }
+        a:hover{
+            color: #080118;
+        }
+    }
+   }
